@@ -1,0 +1,11 @@
+<!--Form to edit an existing book-->
+<form action="/edit_book/{{book.0}}" method="POST">
+    <p>Client edition</p>
+    <input type="text" name="book_name" placeholder="book_name" value="{{book.1}}">
+    <input type="text" name="book_gender" placeholder="book_gender" value="{{book.2}}">
+    <input type="text" name="book_sold_date" placeholder="book_sold_date" value="{{book.3}}">
+    <button type="submit">
+        Edit    
+    </button>    
+
+</form>

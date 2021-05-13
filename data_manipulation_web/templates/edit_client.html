@@ -1,0 +1,13 @@
+<!--Form to edit an existing client-->
+<form action="/edit_client/{{client.0}}" method="POST">
+    <p>Client edition</p>
+    <input type="text" name="client_firstname" placeholder="cliente_firstname" value="{{client.1}}">
+    <input type="text" name="client_lastname" placeholder="cliente_lastname" value="{{client.2}}">
+    <input type="text" name="client_email" placeholder="cliente_email" value="{{client.3}}">
+    <input type="text" name="client_phone" placeholder="cliente_phone" value="{{client.4}}">
+    <input type="date" name="client_birthday" placeholder="cliente_birthday" value="{{client.5}}">
+    <button type="submit">
+        Edit    
+    </button>    
+
+</form>

@@ -1,0 +1,133 @@
+<!--Announcment-->
+<p>Announcement</p>
+{% with messages = get_flashed_messages() %}
+    {% if messages%}
+        {%for message in messages%}
+        <p>
+            {{message}}
+        </p>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
+
+
+<!--Form to create and add a new client-->
+
+<form action="/add_client" method="POST">
+    <p>Add new client</p>
+    <input type="number" name="client_id" placeholder="cliente_id">
+    <input type="text" name="client_firstname" placeholder="cliente_firstname">
+    <input type="text" name="client_lastname" placeholder="cliente_lastname">
+    <input type="text" name="client_email" placeholder="cliente_email">
+    <input type="text" name="client_phone" placeholder="cliente_phone">
+    <input type="date" name="client_birthday" placeholder="cliente_birthday">
+    <button type="submit">
+        Save    
+    </button>    
+
+</form>
+
+<!--Table to show all clients-->
+<p>Sales information</p>
+
+<p>Clients information</p>
+<table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Firstname</td>
+            <td>Lastname</td>
+            <td>Birthday</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Options</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients%}
+            <tr>
+                <td>{{client.0}}</td>
+                <td>{{client.1}}</td>
+                <td>{{client.2}}</td>
+                <td>{{client.3}}</td>
+                <td>{{client.4}}</td>
+                <td>{{client.5}}</td>
+                <td>
+                    <a href="/get_client/{{client.0}}">Edit</a>
+                    <a href="/delete_client/{{client.0}}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!--Form to create and add a new book-->
+
+<form action="/add_book" method="POST">
+    <p>Add new book</p>
+    <input type="number" name="book_id" placeholder="book_id">
+    <input type="text" name="book_name" placeholder="book_name">
+    <input type="text" name="book_gender" placeholder="book_gender" >
+    <input type="date" name="book_sold_date" placeholder="book_sold_date">
+    <input type="number" name="book_fk_client_id" placeholder="book_fk_client_id" >
+    <button type="submit">
+        Save    
+    </button>    
+
+</form>
+
+<p>Books information</p>
+<table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Gender</td>
+            <td>Sold_date</td>
+            <td>Buyer</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books%}
+            <tr>
+                <td>{{book.0}}</td>
+                <td>{{book.1}}</td>
+                <td>{{book.2}}</td>
+                <td>{{book.3}}</td>
+                <td>{{book.4}}</td>
+                <td>
+                    <a href="/get_book/{{book.0}}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+<!--Table to show relationships of clients and books-->
+<p>Relationship between clients and books</p>
+<table>
+    <thead>
+        <tr>
+            <td>Client_ID</td>
+            <td>Client_Lastname</td>
+            <td>Book_ID</td>
+            <td>Book_Name</td>
+            <td>Book_Gender</td>
+            <td>Sold_date</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for relation in relations%}
+            <tr>
+                <td>{{relation.0}}</td>
+                <td>{{relation.1}}</td>
+                <td>{{relation.2}}</td>
+                <td>{{relation.3}}</td>
+                <td>{{relation.4}}</td>
+                <td>{{relation.5}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
